@@ -7,8 +7,7 @@ FROM centos:centos6
 COPY . /src
 
 # Install Node.js and npm, install app dependencies, and remove extraneous files
-RUN yum install epel-release \
- && yum install  -y npm
+RUN yum install -y epel-release && yum install -y wget npm && wget -P / https://raw.githubusercontent.com/remonlam/docker-demo/master/node_web.js
 
 EXPOSE 8080
-CMD ["node", "/src/index.js"]
+CMD ["node", "node_web.js"]
